@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Tokens da marca CGS. No Tailwind v4 a paleta vive aqui (equivalente ao
+ * `theme.extend.colors` do antigo tailwind.config.ts) e gera as classes
+ * bg-cgs-bg, text-cgs-gold, border-cgs-gold/30 etc.
+ */
+@theme {
+  --color-cgs-bg: #151314;
+  --color-cgs-text: #ffffff;
+  --color-cgs-gold: #e59f14;
+
+  --font-serif: var(--font-merriweather), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-merriweather), Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-cgs-bg);
+    color: var(--color-cgs-text);
+    font-family: var(--font-serif);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-cgs-gold) 35%, transparent);
+    color: var(--color-cgs-text);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cgs-gold);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* "Giz": itálico bold usado em H1s e ênfases. */
+  .chalk {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--color-cgs-gold);
+  }
+
+  /* Textura de quadro-negro: ruído fino + manchas de giz apagado. */
+  .chalkboard {
+    background-color: #1b1819;
+    background-image:
+      radial-gradient(120% 80% at 20% 10%, rgb(255 255 255 / 0.045), transparent 60%),
+      radial-gradient(90% 70% at 85% 90%, rgb(229 159 20 / 0.05), transparent 65%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+
+/* Movimento lento de câmera sobre o quadro — simula o vídeo de fundo da hero. */
+@keyframes hero-drift {
+  0% {
+    transform: scale(1.08) translate3d(-2%, -1%, 0);
+  }
+  50% {
+    transform: scale(1.18) translate3d(2%, 1.5%, 0);
+  }
+  100% {
+    transform: scale(1.08) translate3d(-2%, -1%, 0);
+  }
+}
+
+.hero-drift {
+  animation: hero-drift 30s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-drift {
+    animation: none;
+  }
 }
