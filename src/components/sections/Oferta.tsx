@@ -88,7 +88,7 @@ export function Oferta() {
                 ou <span className="font-bold text-cgs-text">R$ 197</span> à vista
               </p>
               <CtaButton className="mt-9 w-full">
-                QUERO GARANTIR MEU ACESSO AGORA
+                Quero garantir meu acesso agora
               </CtaButton>
               <p className="mt-4 text-xs text-cgs-text/45">1 ano de acesso · Pagamento processado pela Hubla</p>
             </div>

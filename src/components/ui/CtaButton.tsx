@@ -1,6 +1,3 @@
-import { ArrowRight } from "lucide-react";
-import { CHECKOUT_URL } from "@/lib/links";
-
 type CtaButtonProps = {
   children: React.ReactNode;
   href?: string;
@@ -9,13 +6,16 @@ type CtaButtonProps = {
   tabIndex?: number;
 };
 
+import { CHECKOUT_URL } from "@/lib/links";
+
 const sizes = {
-  sm: "px-4 py-2.5 text-[0.66rem] tracking-[0.08em] sm:text-[0.7rem] sm:tracking-[0.14em] gap-2",
-  md: "px-7 py-4 text-xs tracking-[0.16em] gap-3",
-  lg: "px-8 py-5 text-sm tracking-[0.16em] gap-3",
+  sm: "px-5 py-2.5 text-[0.8rem]",
+  md: "px-8 py-3.5 text-sm",
+  lg: "px-9 py-4 text-[0.95rem] sm:text-base",
 };
 
-// CTA principal: sempre dourado sólido com texto escuro — nunca discreto.
+// CTA principal: dourado sólido em degradê suave, com brilho interno no topo e um
+// reflexo que atravessa o botão no hover. Texto escuro para contraste máximo.
 // {/* TODO: link real de checkout Hubla */} — o padrão vem de CHECKOUT_URL.
 export function CtaButton({
   children,
@@ -28,14 +28,14 @@ export function CtaButton({
     <a
       href={href}
       tabIndex={tabIndex}
-      className={`group relative inline-flex items-center justify-center rounded-[6px] bg-cgs-gold font-serif font-bold uppercase text-cgs-bg shadow-[0_0_0_1px_rgb(229_159_20/0.4),0_10px_30px_-10px_rgb(229_159_20/0.55)] transition-[transform,box-shadow,background-color] duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#efab22] hover:shadow-[0_0_0_1px_rgb(229_159_20/0.6),0_16px_40px_-12px_rgb(229_159_20/0.7)] active:translate-y-0 ${sizes[size]} ${className}`}
+      className={`group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-r from-cgs-gold via-[#eeae2c] to-[#f6c765] font-serif font-bold tracking-[0.01em] text-cgs-bg shadow-[inset_0_1px_0_rgb(255_255_255/0.4),inset_0_-1px_0_rgb(0_0_0/0.12),0_0_0_1px_rgb(229_159_20/0.45),0_14px_34px_-14px_rgb(229_159_20/0.65)] transition-[transform,box-shadow,filter] duration-300 ease-out hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[inset_0_1px_0_rgb(255_255_255/0.5),inset_0_-1px_0_rgb(0_0_0/0.12),0_0_0_1px_rgb(246_199_101/0.6),0_18px_42px_-14px_rgb(229_159_20/0.8)] active:translate-y-0 ${sizes[size]} ${className}`}
     >
-      <span className="text-center">{children}</span>
-      <ArrowRight
+      {/* Reflexo que varre o botão no hover */}
+      <span
         aria-hidden="true"
-        className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-        strokeWidth={2.5}
+        className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/4 -skew-x-12 bg-gradient-to-r from-transparent via-white/45 to-transparent opacity-0 transition-[transform,opacity] duration-700 ease-out group-hover:translate-x-[520%] group-hover:opacity-100"
       />
+      <span className="relative text-center">{children}</span>
     </a>
   );
 }

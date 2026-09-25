@@ -16,7 +16,7 @@ type StickyCtaProps = {
 // visualmente) para que o script da Hubla consiga reescrever o link com as UTMs.
 export function StickyCta({
   label,
-  cta = "QUERO DOMINAR AS SÍNDROMES",
+  cta = "Quero dominar as síndromes",
   showAfter = 600,
   hideOnId = "oferta",
 }: StickyCtaProps) {

@@ -1,51 +1,64 @@
+import { BookOpen } from "lucide-react";
 import { CtaButton } from "@/components/ui/CtaButton";
-import { HeroBackground } from "@/components/ui/HeroBackground";
+import { HeroVideo } from "@/components/ui/HeroVideo";
 import { Reveal } from "@/components/ui/Reveal";
 
+// Dobra 1 — hero full-bleed com vídeo de aula ao fundo; conteúdo ancorado na base:
+// H1 à esquerda; subtítulo + botões à direita.
 export function Hero() {
   return (
     <section
       id="topo"
-      className="relative flex min-h-[100svh] items-center overflow-hidden pb-28 pt-36 sm:pb-32 sm:pt-40"
+      className="relative flex min-h-[100svh] items-end overflow-hidden bg-cgs-bg pb-20 pt-40 sm:pb-24 lg:pb-28"
     >
-      {/* TODO: passar src do vídeo real de aula no quadro */}
-      <HeroBackground />
+      {/* Vídeo de fundo: 1280p, sem áudio, ~1,2 MB, servido como arquivo estático (CDN da Vercel) */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <HeroVideo src="/video/hero.mp4" poster="/video/hero-poster.webp" />
+        {/* Véus: escurecem a base (leitura do texto) e as bordas */}
+        <div className="absolute inset-0 bg-gradient-to-t from-cgs-bg via-cgs-bg/70 to-cgs-bg/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgb(37_32_34/0.55),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgb(21_19_20/0.75)_100%)]" />
+      </div>
 
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center px-4 text-center sm:px-6">
-        <Reveal>
-          <p className="flex items-center justify-center gap-4 font-serif text-[0.62rem] uppercase tracking-[0.38em] text-cgs-gold/80 sm:text-[0.7rem]">
-            <span aria-hidden="true" className="h-px w-8 bg-gradient-to-r from-transparent to-cgs-gold/60 sm:w-12" />
-            Aulas no quadro
-            <span aria-hidden="true" className="h-px w-8 bg-gradient-to-l from-transparent to-cgs-gold/60 sm:w-12" />
-          </p>
-        </Reveal>
+      <div className="relative mx-auto grid w-full max-w-[90rem] items-end gap-8 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16 lg:px-[5.5%]">
+        {/* Esquerda: chip + H1 */}
+        <div className="text-left">
+          <Reveal>
+            <span className="inline-flex items-center gap-2.5 rounded-md border border-white/10 bg-white/[0.06] px-4 py-3 font-serif text-[0.7rem] uppercase tracking-[0.12em] text-cgs-text/80 backdrop-blur-sm">
+              <BookOpen aria-hidden="true" className="size-4 text-cgs-gold" />
+              Aulas no quadro · CGS
+            </span>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h1 className="mt-6 font-serif text-[1.75rem] font-bold italic leading-[1.2] text-cgs-text sm:text-4xl lg:text-[2.45rem] xl:text-[2.85rem]">
+              Entenda grandes síndromes da medicina{" "}
+              <span className="text-cgs-gold">sem decoreba</span> e{" "}
+              <span className="text-cgs-gold">longe do &lsquo;PBL&rsquo;</span>: veja aulas e
+              discussões feitas <span className="text-cgs-gold">diretamente no quadro</span>.
+            </h1>
+          </Reveal>
+        </div>
 
-        <Reveal delay={0.1}>
-          <h1 className="mt-8 text-balance font-serif text-[1.9rem] font-light leading-[1.25] tracking-[-0.01em] text-cgs-text sm:text-[2.6rem] sm:leading-[1.2] lg:text-[3.1rem]">
-            Entenda grandes síndromes da medicina{" "}
-            <em className="chalk">sem decoreba</em> e longe do &lsquo;PBL&rsquo;: veja aulas e
-            discussões feitas <em className="chalk">diretamente no quadro.</em>
-          </h1>
-        </Reveal>
-
-        <Reveal delay={0.2}>
-          {/* Ornamento de giz */}
-          <div aria-hidden="true" className="mt-9 flex items-center justify-center gap-3">
-            <span className="h-px w-10 bg-cgs-gold/35" />
-            <span className="size-1.5 rotate-45 bg-cgs-gold/70" />
-            <span className="h-px w-10 bg-cgs-gold/35" />
-          </div>
-          <p className="mx-auto mt-9 max-w-xl text-pretty text-[0.95rem] leading-[1.8] text-cgs-text/65 sm:text-base">
-            A organização visual das aulas no quadro, direto ao raciocínio que você usa na prática
-            sem enrolação, sem filtro e sem se esconder no método PBL.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.3} className="mt-11 w-full sm:w-auto">
-          <CtaButton size="lg" className="w-full sm:w-auto">
-            QUERO DOMINAR AS SÍNDROMES
-          </CtaButton>
-        </Reveal>
+        {/* Direita: subtítulo + botões */}
+        <div className="text-left lg:pb-2">
+          <Reveal delay={0.2}>
+            <p className="max-w-lg font-serif text-base font-normal leading-[1.75] text-cgs-text/80 sm:text-lg">
+              A organização visual das aulas no quadro, direto ao raciocínio que você usa na
+              prática sem enrolação, sem filtro e sem se esconder no método PBL.
+            </p>
+          </Reveal>
+          <Reveal delay={0.3} className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-stretch">
+            <CtaButton size="lg" className="w-full sm:w-auto">
+              Quero dominar as síndromes
+            </CtaButton>
+            <a
+              href="#mecanismo"
+              className="inline-flex items-center justify-center rounded-lg border border-white/15 bg-white/[0.05] px-8 py-4 font-serif text-[0.95rem] font-bold text-cgs-text shadow-[inset_0_1px_0_rgb(255_255_255/0.08)] backdrop-blur-sm transition-colors duration-300 hover:border-cgs-gold/40 hover:bg-white/[0.08] sm:text-base"
+            >
+              Saiba mais
+            </a>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

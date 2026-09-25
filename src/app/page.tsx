@@ -1,7 +1,6 @@
 import { Depoimentos } from "@/components/sections/Depoimentos";
 import { Faq } from "@/components/sections/Faq";
 import { Footer } from "@/components/sections/Footer";
-import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { Mecanismo } from "@/components/sections/Mecanismo";
@@ -12,7 +11,6 @@ import { StickyCta } from "@/components/ui/StickyCta";
 export default function Home() {
   return (
     <>
-      <Header />
       <main>
         <Hero />
         <Manifesto />
