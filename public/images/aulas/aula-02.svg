@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900">
+<defs>
+<radialGradient id="g" cx="25%" cy="12%" r="90%"><stop offset="0" stop-color="#2a2527"/><stop offset="1" stop-color="#151314"/></radialGradient>
+<radialGradient id="w" cx="80%" cy="90%" r="60%"><stop offset="0" stop-color="#e59f14" stop-opacity="0.16"/><stop offset="1" stop-color="#e59f14" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="700" height="900" fill="url(#g)"/><rect width="700" height="900" fill="url(#w)"/>
+<rect x="14" y="14" width="672" height="872" rx="26" fill="none" stroke="#e59f14" stroke-opacity="0.35" stroke-width="2"/>
+<text x="56" y="86" fill="#ffffff" fill-opacity="0.6" font-family="Georgia,serif" font-size="26" letter-spacing="6">AULA 02</text>
+<g fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="3" stroke-linecap="round">
+<path d="M150 300 q 200 -40 400 0"/><path d="M350 312 L 200 470 M350 312 L 350 490 M350 312 L 510 470"/>
+<circle cx="200" cy="520" r="44"/><circle cx="350" cy="540" r="44"/><circle cx="510" cy="520" r="44"/>
+<path d="M470 180 q 110 40 150 130" stroke-dasharray="8 14"/>
+</g>
+<rect x="56" y="770" width="64" height="3" fill="#e59f14" fill-opacity="0.75"/>
+</svg>

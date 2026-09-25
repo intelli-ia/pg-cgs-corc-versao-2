@@ -1,6 +1,7 @@
 import { Brain, Compass, Network, PenLine } from "lucide-react";
 import { BenefitsBento, type Benefit } from "@/components/ui/BenefitsBento";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { CircularGallery, type GalleryItem } from "@/components/ui/CircularGallery";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section, SectionTitle } from "@/components/ui/Section";
 
@@ -31,9 +32,19 @@ const benefits: Benefit[] = [
   },
 ];
 
+// TODO: substituir pelas capas (formato vertical) e títulos reais das aulas
+const lessons: GalleryItem[] = [
+  { image: "/images/aulas/aula-01.svg", text: "Síndrome Anêmica" },
+  { image: "/images/aulas/aula-02.svg", text: "O Paciente Cirrótico" },
+  { image: "/images/aulas/aula-03.svg", text: "Exame de Urina" },
+  { image: "/images/aulas/aula-04.svg", text: "Título da aula" },
+  { image: "/images/aulas/aula-05.svg", text: "Título da aula" },
+  { image: "/images/aulas/aula-06.svg", text: "Título da aula" },
+];
+
 export function Mecanismo() {
   return (
-    <Section id="mecanismo" className="border-t border-white/[0.06]">
+    <Section id="mecanismo" className="overflow-x-clip border-t border-white/[0.06]">
       <div className="mx-auto max-w-4xl text-center">
         <Reveal>
           <span aria-hidden="true" className="mx-auto mb-8 block h-px w-24 bg-gradient-to-r from-transparent via-cgs-gold to-transparent" />
@@ -94,6 +105,39 @@ export function Mecanismo() {
         <div className="mt-10">
           <BenefitsBento benefits={benefits} />
         </div>
+      </div>
+
+      <div className="mt-24 sm:mt-32">
+        <Reveal>
+          <SectionTitle className="mx-auto max-w-2xl text-center">
+            O seu arsenal de Raciocínio Clínico está aqui.
+          </SectionTitle>
+        </Reveal>
+
+        {/* Galeria circular (WebGL): arraste para os lados. Os títulos ficam em sr-only para acessibilidade. */}
+        <Reveal delay={0.1}>
+          <div role="region" aria-label="Aulas do curso" className="relative left-1/2 mt-6 h-[420px] w-screen -translate-x-1/2 sm:h-[520px] lg:h-[600px]">
+            <CircularGallery
+              items={lessons}
+              bend={3}
+              borderRadius={0.05}
+              scrollEase={0.05}
+              className="font-serif text-[26px] font-bold italic text-cgs-gold sm:text-[30px]"
+            />
+            <ul className="sr-only">
+              {lessons.map((l, i) => (
+                <li key={i}>{l.text}</li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+
+        <Reveal className="mx-auto mt-16 max-w-3xl text-center">
+          <p className="text-balance font-serif text-xl italic leading-relaxed text-cgs-text/90 sm:text-2xl sm:leading-relaxed">
+            Tudo isso em um <span className="chalk">curso vivo</span>, onde aulas novas poderão ser
+            adicionadas periodicamente, para acompanhar a sua evolução na prática médica.
+          </p>
+        </Reveal>
       </div>
     </Section>
   );

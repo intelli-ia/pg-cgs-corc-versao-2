@@ -9,6 +9,10 @@
   --color-cgs-bg: #151314;
   --color-cgs-text: #ffffff;
   --color-cgs-gold: #e59f14;
+  /* Seção clara da oferta (mesma paleta da referência): papel quente + tintas */
+  --color-cgs-parchment: #f4f0e8;
+  --color-cgs-ink-soft: #4a4341;
+  --color-cgs-hairline-ink: #15131426;
 
   --font-serif: var(--font-merriweather), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-merriweather), Georgia, serif;
