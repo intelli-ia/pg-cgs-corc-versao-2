@@ -7,7 +7,16 @@ import { useEffect, useRef, useState } from "react";
 // salto do poster para o primeiro frame. O React não grava `muted` como propriedade
 // no SSR, e sem isso alguns navegadores bloqueiam o autoplay; por isso forçamos muted
 // e play() aqui.
-export function HeroVideo({ src, poster }: { src: string; poster: string }) {
+export function HeroVideo({
+  src,
+  poster,
+  className = "",
+}: {
+  src: string;
+  poster: string;
+  /** Classes extras nas mídias (ex.: `object-position`). */
+  className?: string;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -31,11 +40,11 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
         fetchPriority="high"
         decoding="async"
         draggable={false}
-        className="absolute inset-0 size-full object-cover"
+        className={`absolute inset-0 size-full object-cover ${className}`}
       />
       <video
         ref={ref}
-        className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ease-out ${
+        className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ease-out ${className} ${
           playing ? "opacity-100" : "opacity-0"
         }`}
         src={src}

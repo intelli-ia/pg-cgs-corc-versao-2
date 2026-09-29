@@ -132,7 +132,7 @@ export function Oferta() {
                 />
                 <a
                   href={CHECKOUT_URL}
-                  className="group relative flex w-full items-center justify-center overflow-hidden whitespace-nowrap rounded-lg bg-gradient-to-r from-cgs-gold via-[#eeae2c] to-[#f6c765] px-3 py-5 text-[clamp(0.7rem,3.4vw,1rem)] font-black uppercase tracking-[0.05em] text-cgs-bg shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_0_0_1px_rgba(229,159,20,0.55),0_18px_40px_-12px_rgba(229,159,20,0.85)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cgs-gold sm:px-8 sm:text-[1.05rem] md:text-lg"
+                  className="group relative flex w-full items-center justify-center overflow-hidden whitespace-nowrap rounded-lg bg-gradient-to-r from-cgs-gold via-[#eeae2c] to-[#f6c765] px-3 py-4 text-[clamp(0.55rem,calc((100vw_-_7rem)/24),0.8rem)] font-black uppercase tracking-[0.03em] sm:py-5 sm:tracking-[0.05em] text-cgs-bg shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_0_0_1px_rgba(229,159,20,0.55),0_18px_40px_-12px_rgba(229,159,20,0.85)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cgs-gold sm:px-8 sm:text-[1.05rem] md:text-lg"
                 >
                   <span
                     aria-hidden="true"
@@ -163,7 +163,7 @@ export function Oferta() {
 
           {/* ── Prévia da área de membros ── */}
           {/* Irmã do cartão: encavala a aresta de baixo e transborda as laterais. */}
-          <div className="relative left-1/2 z-10 -mt-[4.5rem] w-[min(1040px,calc(100vw-2rem))] -translate-x-1/2 md:-mt-[9.5rem] lg:left-full lg:ml-14 lg:w-[min(1040px,calc(50vw+392px))] lg:-translate-x-full">
+          <div className="relative left-1/2 z-10 -mt-[4.5rem] -ml-[2vw] w-[100vw] -translate-x-1/2 sm:ml-0 sm:w-[min(1040px,calc(100vw-2rem))] md:-mt-[9.5rem] lg:left-full lg:ml-14 lg:w-[min(1040px,calc(50vw+392px))] lg:-translate-x-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/mockup.webp"

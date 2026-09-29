@@ -12,7 +12,12 @@ export function Hero() {
     >
       {/* Vídeo de fundo: 1280p, sem áudio, ~1,2 MB, servido como arquivo estático (CDN da Vercel) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <HeroVideo src="/video/hero.mp4" poster="/video/hero-poster.webp" />
+        {/* No celular o corte é lateral: puxa o enquadramento para mostrar mais o lado direito do vídeo, deslocando-o para a esquerda */}
+        <HeroVideo
+          src="/video/hero.mp4"
+          poster="/video/hero-poster.webp"
+          className="object-[68%_50%] sm:object-center"
+        />
         {/* Véus: escurecem a base (leitura do texto) e as bordas */}
         <div className="absolute inset-0 bg-gradient-to-t from-cgs-bg via-cgs-bg/70 to-cgs-bg/20" />
         {/* Degradê final: a hero termina no preto liso da dobra seguinte, sem linha de corte */}

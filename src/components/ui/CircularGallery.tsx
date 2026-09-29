@@ -10,7 +10,7 @@ import {
   Transform,
   type OGLRenderingContext,
 } from "ogl";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Galeria circular em WebGL (OGL): capas curvadas em arco, arrastáveis, com ondulação
 // ao rolar. Adaptada do componente `circular-gallery-2` para este projeto:
@@ -32,6 +32,8 @@ interface CircularGalleryProps extends React.HTMLAttributes<HTMLDivElement> {
   scrollSpeed?: number;
   /** Suavidade da animação (menor = mais suave). */
   scrollEase?: number;
+  /** Largura mínima da janela (px) para montar a galeria WebGL; abaixo disso ela não roda. */
+  minViewport?: number;
 }
 
 type Size = { width: number; height: number };
@@ -439,14 +441,26 @@ export function CircularGallery({
   borderRadius = 0.05,
   scrollSpeed = 2,
   scrollEase = 0.05,
+  minViewport = 0,
   className = "",
   ...props
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  // Só monta o WebGL quando a janela tem a largura mínima (acompanha redimensionamentos).
+  const [enabled, setEnabled] = useState(minViewport === 0);
+
+  useEffect(() => {
+    if (!minViewport) return;
+    const mq = window.matchMedia(`(min-width: ${minViewport}px)`);
+    const update = () => setEnabled(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, [minViewport]);
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container || !enabled) return;
 
     // A cor e a fonte dos títulos vêm do CSS do contêiner (classes abaixo).
     const style = getComputedStyle(container);
@@ -484,7 +498,7 @@ export function CircularGallery({
       observer?.disconnect();
       app?.destroy();
     };
-  }, [items, bend, borderRadius, scrollSpeed, scrollEase]);
+  }, [enabled, items, bend, borderRadius, scrollSpeed, scrollEase]);
 
   return (
     <div

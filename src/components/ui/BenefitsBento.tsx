@@ -43,8 +43,8 @@ export function BenefitsBento({ benefits }: { benefits: Benefit[] }) {
             <Point text={main.text} />
           </div>
 
-          {/* Vídeo da aula no quadro */}
-          <div className="relative hidden min-h-[16rem] overflow-hidden lg:block lg:border-l lg:border-white/10">
+          {/* Vídeo da aula no quadro: no celular fica em cima do bloco; no desktop, à direita */}
+          <div className="relative order-first aspect-video overflow-hidden border-b border-white/10 lg:order-none lg:aspect-auto lg:min-h-[16rem] lg:border-b-0 lg:border-l">
             <HeroVideo src="/video/hero.mp4" poster="/video/hero-poster.webp" />
             {/* Grid overlay */}
             <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(90deg,rgb(229_159_20/0.3)_1px,transparent_1px),linear-gradient(rgb(229_159_20/0.3)_1px,transparent_1px)] [background-size:40px_40px]" />

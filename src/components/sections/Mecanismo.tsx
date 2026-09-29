@@ -64,15 +64,44 @@ export function Mecanismo() {
           </SectionTitle>
         </Reveal>
 
-        {/* Galeria circular (WebGL): arraste para os lados. Os títulos ficam em sr-only para acessibilidade. */}
-        <Reveal delay={0.1}>
-          <div role="region" aria-label="Aulas do curso" className="relative left-1/2 mt-6 h-[420px] w-screen -translate-x-1/2 sm:h-[520px] lg:h-[600px]">
+        {/* Celular: blocos lado a lado, com rolagem horizontal e encaixe (sem WebGL) */}
+        <Reveal delay={0.1} className="sm:hidden">
+          <ul
+            role="region"
+            aria-label="Aulas do curso"
+            className="-mx-4 mt-8 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {lessons.map((l) => (
+              <li key={l.image} className="w-[68%] shrink-0 snap-start">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={l.image}
+                  alt=""
+                  width={840}
+                  height={1080}
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                  className="aspect-[7/9] w-full select-none rounded-2xl border border-cgs-gold/30 object-cover"
+                />
+                <p className="mt-4 text-balance text-center font-serif text-lg font-bold italic leading-snug text-cgs-gold">
+                  {l.text}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        {/* Desktop/tablet: galeria circular (WebGL), arraste para os lados. Os títulos ficam em sr-only para acessibilidade. */}
+        <Reveal delay={0.1} className="hidden sm:block">
+          <div role="region" aria-label="Aulas do curso" className="relative left-1/2 mt-6 h-[520px] w-screen -translate-x-1/2 lg:h-[600px]">
             <CircularGallery
               items={lessons}
+              minViewport={640}
               bend={3}
               borderRadius={0.05}
               scrollEase={0.05}
-              className="font-serif text-[26px] font-bold italic text-cgs-gold sm:text-[30px]"
+              className="font-serif text-[30px] font-bold italic text-cgs-gold"
             />
             <ul className="sr-only">
               {lessons.map((l, i) => (
