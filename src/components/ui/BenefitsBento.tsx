@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { HeroVideo } from "@/components/ui/HeroVideo";
 import { Reveal } from "@/components/ui/Reveal";
@@ -21,14 +20,9 @@ function IconTile({ icon: Icon }: { icon: LucideIcon }) {
 
 function Point({ text }: { text: string }) {
   return (
-    <div className="flex items-start gap-3.5">
-      <span className="mt-[0.4rem] grid size-5 shrink-0 place-items-center rounded-full bg-cgs-gold/15 text-cgs-gold ring-1 ring-cgs-gold/30">
-        <Check aria-hidden="true" className="size-3" strokeWidth={3} />
-      </span>
-      <p className="text-pretty font-serif text-base leading-[1.8] text-cgs-text/85 first-letter:uppercase">
-        {text}
-      </p>
-    </div>
+    <p className="text-pretty font-serif text-base leading-[1.8] text-cgs-text/85 first-letter:uppercase">
+      {text}
+    </p>
   );
 }
 

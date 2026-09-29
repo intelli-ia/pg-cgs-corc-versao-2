@@ -78,9 +78,29 @@
   will-change: transform;
 }
 
+/* Brilho pulsante atrás do botão de compra. */
+@keyframes cta-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+.cta-glow {
+  animation: cta-glow 2.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .cta-glow {
+    animation: none;
+    opacity: 0.55;
   }
 
   .hero-drift {

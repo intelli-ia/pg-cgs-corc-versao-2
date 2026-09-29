@@ -49,29 +49,49 @@ function lerp(p1: number, p2: number, t: number) {
   return p1 + (p2 - p1) * t;
 }
 
+// Quebra o título em linhas de no máximo `maxWidth` px (títulos longos ficam em 2 linhas,
+// em vez de ficarem mais largos que a capa e invadirem o título da capa vizinha).
+function wrapText(context: CanvasRenderingContext2D, text: string, maxWidth: number) {
+  const lines: string[] = [];
+  let line = "";
+  for (const word of text.split(" ")) {
+    const next = line ? `${line} ${word}` : word;
+    if (line && context.measureText(next).width > maxWidth) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = next;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
 function createTextTexture(gl: OGLRenderingContext, text: string, font: string, color: string) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d")!;
   context.font = font;
-  const metrics = context.measureText(text);
-  const textWidth = Math.ceil(metrics.width);
-  const textHeight = Math.ceil(parseInt(font.split(" ").find((p) => p.endsWith("px")) ?? "30", 10) * 1.3);
+  const fontPx = parseInt(font.split(" ").find((p) => p.endsWith("px")) ?? "30", 10);
+  const lineHeight = Math.ceil(fontPx * 1.3);
+  const lines = wrapText(context, text, fontPx * 9);
+  const textWidth = Math.ceil(Math.max(...lines.map((l) => context.measureText(l).width)));
   canvas.width = textWidth + 20;
-  canvas.height = textHeight + 20;
+  canvas.height = lineHeight * lines.length + 20;
   context.font = font;
   context.fillStyle = color;
   context.textBaseline = "middle";
   context.textAlign = "center";
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillText(text, canvas.width / 2, canvas.height / 2);
+  lines.forEach((l, i) => context.fillText(l, canvas.width / 2, 10 + lineHeight * (i + 0.5)));
   const texture = new Texture(gl, { generateMipmaps: false });
   texture.image = canvas;
-  return { texture, width: canvas.width, height: canvas.height };
+  // Altura de uma linha (com a margem): base para a escala do texto na cena.
+  return { texture, width: canvas.width, height: canvas.height, unitHeight: lineHeight + 20 };
 }
 
 class Title {
   constructor(gl: OGLRenderingContext, plane: Mesh, text: string, textColor: string, font: string) {
-    const { texture, width, height } = createTextTexture(gl, text, font, textColor);
+    const { texture, width, height, unitHeight } = createTextTexture(gl, text, font, textColor);
     const geometry = new Plane(gl);
     const program = new Program(gl, {
       vertex: `
@@ -99,9 +119,10 @@ class Title {
       transparent: true,
     });
     const mesh = new Mesh(gl, { geometry, program });
-    const aspect = width / height;
-    const textHeight = plane.scale.y * 0.15;
-    const textWidth = textHeight * aspect;
+    // Uma linha de texto mede 9% da altura da capa; títulos de várias linhas crescem em proporção.
+    const unit = (plane.scale.y * 0.09) / unitHeight;
+    const textHeight = height * unit;
+    const textWidth = width * unit;
     mesh.scale.set(textWidth, textHeight, 1);
     mesh.position.y = -plane.scale.y * 0.5 - textHeight * 0.5 - 0.05;
     mesh.setParent(plane);
@@ -383,6 +404,8 @@ class App {
     const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
     const width = height * this.camera.aspect;
     this.viewport = { width, height };
+    // Sobe a cena um pouco: os títulos (até 4 linhas) ocupam o espaço abaixo das capas.
+    this.scene.position.y = height * 0.1;
     this.medias.forEach((media) => media.onResize({ screen: this.screen, viewport: this.viewport }));
   };
 
@@ -433,20 +456,32 @@ export function CircularGallery({
     const effectiveBend = container.clientWidth < 640 ? bend * 0.3 : bend;
 
     let app: App | null = null;
-    try {
-      app = new App(container, items, effectiveBend, style.color, borderRadius, font, scrollSpeed, scrollEase);
-    } catch {
-      // Sem WebGL: a galeria fica vazia e a lista em `sr-only` continua acessível.
-      return;
-    }
+    let observer: IntersectionObserver | null = null;
+    let cancelled = false;
 
-    const observer = new IntersectionObserver(([entry]) => {
-      if (app) app.visible = entry.isIntersecting;
+    // Os títulos são desenhados num <canvas> uma única vez; se a fonte da página ainda não
+    // carregou (o Merriweather itálico/negrito só baixa quando é usado), sairia a fonte
+    // reserva. Por isso esperamos a fonte antes de montar a galeria.
+    const sample = items.map((i) => i.text).join(" ");
+    const fontReady = document.fonts?.load(font, sample).catch(() => undefined) ?? Promise.resolve();
+
+    fontReady.then(() => {
+      if (cancelled) return;
+      try {
+        app = new App(container, items, effectiveBend, style.color, borderRadius, font, scrollSpeed, scrollEase);
+      } catch {
+        // Sem WebGL: a galeria fica vazia e a lista em `sr-only` continua acessível.
+        return;
+      }
+      observer = new IntersectionObserver(([entry]) => {
+        if (app) app.visible = entry.isIntersecting;
+      });
+      observer.observe(container);
     });
-    observer.observe(container);
 
     return () => {
-      observer.disconnect();
+      cancelled = true;
+      observer?.disconnect();
       app?.destroy();
     };
   }, [items, bend, borderRadius, scrollSpeed, scrollEase]);

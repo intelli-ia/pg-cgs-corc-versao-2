@@ -67,8 +67,8 @@ export function Oferta() {
             Mais de uma década à beira do leito
           </p>
           <h2 className="mx-auto max-w-[720px] text-center text-[34px] font-black leading-[1.1] text-cgs-bg sm:text-[42px] md:text-[56px]">
-            Tome posse de seu raciocínio e recupere a{" "}
-            <em className="font-black italic text-cgs-gold">segurança</em> na beira do leito.
+            Recupere sua <em className="font-black italic text-cgs-gold">segurança</em> na beira do
+            leito.
           </h2>
           <div aria-hidden="true" className="mx-auto mt-7 h-px w-[110px] bg-cgs-gold opacity-60 md:mt-8" />
           <p className="mx-auto mt-7 max-w-[620px] text-pretty text-center text-base font-light leading-relaxed text-cgs-ink-soft md:text-lg">
@@ -80,7 +80,7 @@ export function Oferta() {
 
         {/* ── Cartão da oferta ── */}
         <Reveal delay={0.14} className="mt-14 md:mt-16">
-          <div className="relative mx-auto max-w-[620px] overflow-hidden rounded-[20px] border border-cgs-hairline-ink bg-white px-6 pb-10 pt-11 shadow-[0_50px_110px_-45px_rgba(21,19,20,0.42)] md:px-12 md:pb-14 md:pt-14">
+          <div className="relative mx-auto max-w-[620px] overflow-hidden rounded-[20px] border border-cgs-hairline-ink bg-white px-6 pb-[7rem] pt-11 shadow-[0_50px_110px_-45px_rgba(21,19,20,0.42)] md:px-12 md:pb-[12.5rem] md:pt-14">
             {/* Aresta dourada: o único ouro estrutural do cartão */}
             <div
               aria-hidden="true"
@@ -124,15 +124,26 @@ export function Oferta() {
 
               <p className="mt-4 text-base font-light text-cgs-ink-soft md:text-lg">ou R$ 197 à vista</p>
 
-              <a
-                href={CHECKOUT_URL}
-                className="mt-10 inline-flex w-full max-w-[420px] items-center justify-center rounded-lg bg-cgs-gold px-8 py-5 text-[15px] font-black uppercase tracking-[0.08em] text-cgs-bg shadow-[0_14px_30px_-14px_rgba(229,159,20,0.7)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cgs-gold md:text-lg"
-              >
-                Quero garantir meu acesso agora
-              </a>
+              {/* Botão em uma linha, com brilho de fundo pulsando */}
+              <div className="relative mx-auto mt-10 w-full">
+                <div
+                  aria-hidden="true"
+                  className="cta-glow pointer-events-none absolute -inset-x-3 -inset-y-2 rounded-2xl bg-cgs-gold blur-xl"
+                />
+                <a
+                  href={CHECKOUT_URL}
+                  className="group relative flex w-full items-center justify-center overflow-hidden whitespace-nowrap rounded-lg bg-gradient-to-r from-cgs-gold via-[#eeae2c] to-[#f6c765] px-3 py-5 text-[clamp(0.7rem,3.4vw,1rem)] font-black uppercase tracking-[0.05em] text-cgs-bg shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_0_0_1px_rgba(229,159,20,0.55),0_18px_40px_-12px_rgba(229,159,20,0.85)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cgs-gold sm:px-8 sm:text-[1.05rem] md:text-lg"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/4 -skew-x-12 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 transition-[transform,opacity] duration-700 ease-out group-hover:translate-x-[520%] group-hover:opacity-100"
+                  />
+                  <span className="relative">Quero garantir meu acesso agora</span>
+                </a>
+              </div>
 
               {/* ── Selos e ressalva ── */}
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] font-bold uppercase tracking-[0.1em] text-cgs-ink-soft md:text-xs">
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] font-bold uppercase tracking-[0.1em] text-cgs-ink-soft md:text-xs">
                 <span className="inline-flex items-center gap-2">
                   <Lock aria-hidden="true" className="size-3.5 text-cgs-gold" strokeWidth={2.5} />
                   Compra segura
@@ -144,7 +155,7 @@ export function Oferta() {
                 </span>
               </div>
 
-              <p className="mt-3 text-[13px] font-light italic text-cgs-ink-soft opacity-80 md:text-sm">
+              <p className="mt-5 text-[13px] font-light italic text-cgs-ink-soft opacity-80 md:text-sm">
                 1 ano de acesso · Pagamento processado pela Hubla
               </p>
             </div>
@@ -152,13 +163,13 @@ export function Oferta() {
 
           {/* ── Prévia da área de membros ── */}
           {/* Irmã do cartão: encavala a aresta de baixo e transborda as laterais. */}
-          <div className="relative z-10 mx-auto -mt-6 w-full max-w-[820px] md:-mt-10">
+          <div className="relative left-1/2 z-10 -mt-[4.5rem] w-[min(1040px,calc(100vw-2rem))] -translate-x-1/2 md:-mt-[9.5rem] lg:left-full lg:ml-14 lg:w-[min(1040px,calc(50vw+392px))] lg:-translate-x-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/area-de-membros.webp"
+              src="/images/mockup.webp"
               alt="A área de membros aberta em notebook, tablet e celular"
               width={1600}
-              height={1068}
+              height={902}
               draggable={false}
               className="block h-auto w-full select-none"
             />

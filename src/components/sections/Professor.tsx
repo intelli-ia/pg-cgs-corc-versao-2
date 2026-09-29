@@ -3,18 +3,21 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 
-const credentials = ["UFBA", "Reumatologista · SBR", "Doutor em Medicina e Saúde Humana", "EBMSP · UNIFACS"];
-
-function PortraitPlaceholder() {
+function Portrait() {
   return (
     <div className="rounded-xl border border-cgs-gold/25 bg-gradient-to-b from-cgs-gold/[0.07] to-transparent p-2 sm:p-3">
-      {/* TODO: substituir pela foto real do Dr. Carlos Antonio Moura (formato 4:5) */}
-      <div className="chalkboard relative grid aspect-[4/5] place-items-center overflow-hidden rounded-md ring-1 ring-inset ring-white/5">
-        <span className="chalk text-7xl opacity-80">CM</span>
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-cgs-bg to-transparent p-6 pt-20">
-          <p className="chalk text-xl">Dr. Carlos Antonio Moura</p>
-          <p className="mt-1 text-xs uppercase tracking-[0.22em] text-cgs-text/60">Clínico e reumatologista</p>
-        </div>
+      <div className="relative aspect-[4/5] overflow-hidden rounded-md ring-1 ring-inset ring-white/5">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/dr-carlos.webp"
+          alt="Dr. Carlos Antonio Moura"
+          width={896}
+          height={1117}
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+          className="absolute inset-0 size-full select-none object-cover"
+        />
       </div>
     </div>
   );
@@ -25,14 +28,7 @@ export function Professor() {
     <Section id="professor" className="border-t border-white/[0.06]">
       <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <Reveal className="lg:sticky lg:top-10">
-          <PortraitPlaceholder />
-          <ul className="mt-6 flex flex-wrap gap-2">
-            {credentials.map((c) => (
-              <li key={c} className="rounded-full border border-cgs-gold/25 px-3 py-1.5 text-[0.7rem] text-cgs-text/70">
-                {c}
-              </li>
-            ))}
-          </ul>
+          <Portrait />
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -70,7 +66,9 @@ export function Professor() {
 
           <figure className="mt-12 border-l-2 border-cgs-gold/60 pl-6">
             <blockquote className="chalk text-2xl leading-snug sm:text-3xl">
-              &ldquo;A excelência não é um ato, mas um hábito.&rdquo;
+              &ldquo;A excelência não é um ato,
+              <br />
+              mas um hábito.&rdquo;
             </blockquote>
             <ChalkStroke className="mt-4 h-2 w-24 text-cgs-gold/40" />
           </figure>

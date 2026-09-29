@@ -5,6 +5,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { Mecanismo } from "@/components/sections/Mecanismo";
 import { Oferta } from "@/components/sections/Oferta";
+import { Raciocinio } from "@/components/sections/Raciocinio";
 import { Professor } from "@/components/sections/Professor";
 import { StickyCta } from "@/components/ui/StickyCta";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <main>
         <Hero />
         <Manifesto />
+        <Raciocinio />
         <Mecanismo />
         <Depoimentos />
         <Oferta />
