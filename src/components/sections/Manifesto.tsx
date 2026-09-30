@@ -101,9 +101,9 @@ export function Manifesto() {
       </div>
 
       {/* Três faixas douradas, cada uma com um cartão de imagem sobreposto de um lado e o texto do outro */}
-      <div className="relative left-1/2 mt-16 w-screen -translate-x-1/2 bg-cgs-bg px-4 pb-20 pt-16 sm:px-6 sm:pb-28 sm:pt-20">
+      <div className="relative left-1/2 mt-2 w-screen -translate-x-1/2 bg-cgs-bg px-4 pb-20 pt-2 sm:px-6 sm:pb-28 sm:pt-2">
         <Reveal className="mx-auto max-w-4xl text-center">
-          <p className="text-balance font-serif text-2xl font-bold leading-snug text-cgs-text sm:text-3xl">
+          <p className="text-balance font-serif text-lg font-bold leading-relaxed text-cgs-text sm:text-xl">
             O problema não é a sua inteligência.{" "}
             <span className="italic text-cgs-gold">O problema é que:</span>
           </p>
