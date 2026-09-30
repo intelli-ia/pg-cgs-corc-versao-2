@@ -3,7 +3,7 @@ import { HeroVideo } from "@/components/ui/HeroVideo";
 import { Reveal } from "@/components/ui/Reveal";
 
 // Dobra 1 — hero full-bleed com vídeo de aula ao fundo; conteúdo ancorado na base:
-// H1 à esquerda; subtítulo + botões à direita.
+// H1, subtítulo (H2) e botões empilhados à esquerda; lado direito sem conteúdo.
 export function Hero() {
   return (
     <section
@@ -31,33 +31,31 @@ export function Hero() {
         Aulas no quadro
       </div>
 
-      <div className="relative mx-auto grid w-full max-w-[90rem] items-end gap-8 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16 lg:px-[5.5%]">
-        {/* Esquerda: H1 */}
-        <div className="text-left">
+      <div className="relative mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-[5.5%]">
+        {/* Tudo empilhado à esquerda (H1, subtítulo, botões); o lado direito fica livre para o vídeo */}
+        <div className="max-w-[60rem] text-left">
           <Reveal>
-            <h1 className="font-serif text-[1.75rem] font-bold leading-[1.2] text-cgs-text sm:text-4xl lg:text-[2.45rem] xl:text-[2.85rem]">
-              Domine as grandes síndromes da medicina
+            <h1 className="font-serif text-[2.1rem] font-bold leading-[1.2] text-cgs-text sm:text-5xl lg:text-[3.1rem] xl:text-[3.6rem]">
+              Domine as grandes
+              <br />
+              síndromes da medicina
               <br />
               <span className="text-cgs-gold">sem decoreba</span>.
             </h1>
           </Reveal>
-        </div>
-
-        {/* Direita: subtítulo + botões */}
-        <div className="text-left lg:pb-2">
           <Reveal delay={0.2}>
-            <p className="max-w-lg font-serif text-base font-normal leading-[1.75] text-cgs-text/80 sm:text-lg">
+            <h2 className="mt-7 max-w-2xl font-serif text-xl font-normal leading-[1.7] text-cgs-text/80 sm:text-2xl lg:text-[1.65rem]">
               Aulas e discussões feitas diretamente no quadro, direto ao raciocínio que você usa na
               prática.
-            </p>
+            </h2>
           </Reveal>
-          <Reveal delay={0.3} className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-stretch">
-            <CtaButton size="lg" className="w-full sm:w-auto">
+          <Reveal delay={0.3} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-stretch">
+            <CtaButton size="xl" className="w-full sm:w-auto">
               Quero dominar as síndromes
             </CtaButton>
             <a
               href="#raciocinio"
-              className="inline-flex items-center justify-center rounded-lg border border-white/15 bg-white/[0.05] px-8 py-4 font-serif text-[0.95rem] font-bold text-cgs-text shadow-[inset_0_1px_0_rgb(255_255_255/0.08)] backdrop-blur-sm transition-colors duration-300 hover:border-cgs-gold/40 hover:bg-white/[0.08] sm:text-base"
+              className="inline-flex items-center justify-center rounded-lg border border-white/15 bg-white/[0.05] px-9 py-5 font-serif text-base font-bold text-cgs-text shadow-[inset_0_1px_0_rgb(255_255_255/0.08)] backdrop-blur-sm transition-colors duration-300 hover:border-cgs-gold/40 hover:bg-white/[0.08] sm:text-lg"
             >
               Saiba mais
             </a>

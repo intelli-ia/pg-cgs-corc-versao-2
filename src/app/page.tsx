@@ -30,8 +30,8 @@ export default function Home() {
         label={
           <>
             <span className="hidden text-cgs-text/60 sm:block">Grandes Síndromes</span>
-            <span className="block whitespace-nowrap font-bold text-cgs-text">12x de R$ 20,02</span>
-            <span className="block whitespace-nowrap text-cgs-text/60">ou R$ 197 à vista</span>
+            <span className="block whitespace-nowrap font-bold text-cgs-text">12x de R$ 30,02</span>
+            <span className="block whitespace-nowrap text-cgs-text/60">ou R$ 297 à vista</span>
           </>
         }
       />

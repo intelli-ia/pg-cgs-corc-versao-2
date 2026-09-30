@@ -37,7 +37,7 @@ export function Faq() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-[6px] border border-cgs-gold px-6 py-3.5 font-serif text-xs font-bold uppercase tracking-[0.16em] text-cgs-gold transition-colors hover:bg-cgs-gold hover:text-cgs-bg sm:w-auto"
+              className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-[6px] bg-[#25d366] px-6 py-3.5 font-serif text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_10px_30px_-10px_rgba(37,211,102,0.6)] transition-colors hover:bg-[#1ebe5b] sm:w-auto"
             >
               <MessageCircle aria-hidden="true" className="size-4" strokeWidth={2.5} />
               Falar no WhatsApp

@@ -1,9 +1,10 @@
 import { Reveal } from "@/components/ui/Reveal";
 
-// Seção clara (fundo branco) entre a Dobra 2 e a Dobra 3: texto corrido sobre o método.
+// Parte de cima da dobra clara (fundo branco) que continua em <Mecanismo />: texto corrido
+// sobre o método. Sem padding embaixo: os blocos da Mecanismo vêm logo após o texto.
 export function Raciocinio() {
   return (
-    <section id="raciocinio" className="relative bg-white py-20 sm:py-28">
+    <section id="raciocinio" className="relative bg-white pb-0 pt-20 sm:pt-28">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
         <Reveal>
           <h2 className="text-balance font-serif text-[1.9rem] font-bold leading-[1.25] text-cgs-bg sm:text-4xl sm:leading-[1.2] lg:text-5xl lg:leading-[1.2]">

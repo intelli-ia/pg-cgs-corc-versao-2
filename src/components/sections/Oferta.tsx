@@ -62,20 +62,11 @@ export function Oferta() {
       <div className="relative z-10 mx-auto max-w-[880px] px-5 md:px-8">
         {/* ── Manchete ── */}
         <Reveal>
-          {/* TODO: confirmar o texto do banner acima do H1 */}
-          <p className="mx-auto mb-6 w-fit rounded-full border border-cgs-gold/50 bg-cgs-gold/10 px-4 py-2 text-center text-[0.65rem] font-bold uppercase tracking-[0.22em] text-cgs-ink-soft sm:text-xs">
-            Mais de uma década à beira do leito
-          </p>
           <h2 className="mx-auto max-w-[720px] text-center text-[34px] font-black leading-[1.1] text-cgs-bg sm:text-[42px] md:text-[56px]">
             Recupere sua <em className="font-black italic text-cgs-gold">segurança</em> na beira do
             leito.
           </h2>
           <div aria-hidden="true" className="mx-auto mt-7 h-px w-[110px] bg-cgs-gold opacity-60 md:mt-8" />
-          <p className="mx-auto mt-7 max-w-[620px] text-pretty text-center text-base font-light leading-relaxed text-cgs-ink-soft md:text-lg">
-            Você precisa de visualizar alguém que organizou o próprio método e deu certo; alguém com
-            experiência vasta, com mais de 50 casos discutidos por semana ao longo de mais de uma
-            década de atuação.
-          </p>
         </Reveal>
 
         {/* ── Cartão da oferta ── */}
@@ -90,14 +81,11 @@ export function Oferta() {
             <h3 className="text-center text-xs font-bold uppercase tracking-[0.18em] text-cgs-ink-soft md:text-sm">
               O que está incluso:
             </h3>
-            <p className="mt-3 text-center text-lg font-black leading-snug text-cgs-bg md:text-xl">
-              Grandes Síndromes: O Raciocínio no Quadro
-            </p>
 
             {/* ── Entregas ── */}
-            <ul className="mx-auto mt-9 max-w-[480px] space-y-2.5 md:mt-11">
+            <ul className="mx-auto mt-7 max-w-[480px] space-y-0.5 md:mt-9">
               {included.map((texto) => (
-                <li key={texto} className="flex items-center gap-4 rounded-lg border border-transparent px-4 py-2.5">
+                <li key={texto} className="flex items-center gap-4 rounded-lg border border-transparent px-4 py-1.5">
                   <span
                     aria-hidden="true"
                     className="flex size-[22px] shrink-0 items-center justify-center rounded-full bg-cgs-gold text-cgs-bg"
@@ -112,17 +100,13 @@ export function Oferta() {
             {/* ── Preço ── */}
             <div className="mt-11 border-t border-cgs-hairline-ink pt-10 text-center md:mt-14 md:pt-12">
               <p className="text-base font-light text-cgs-ink-soft md:text-lg">
-                De <s className="decoration-1">R$ 297</s> por
+                De <s className="decoration-1">R$ 597</s> por apenas 12x de
+              </p>
+              <p className="mt-2 text-[44px] font-black leading-none text-cgs-bg sm:text-[56px] md:text-[68px]">
+                R$ 30,02
               </p>
 
-              <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-cgs-ink-soft md:text-xs">
-                apenas
-              </p>
-              <p className="mt-1.5 text-[32px] font-black leading-none text-cgs-bg min-[380px]:text-[36px] sm:text-[48px] md:text-[62px]">
-                12x de R$ 20,02
-              </p>
-
-              <p className="mt-4 text-base font-light text-cgs-ink-soft md:text-lg">ou R$ 197 à vista</p>
+              <p className="mt-4 text-base font-light text-cgs-ink-soft md:text-lg">ou R$ 297 à vista</p>
 
               {/* Botão em uma linha, com brilho de fundo pulsando */}
               <div className="relative mx-auto mt-10 w-full">

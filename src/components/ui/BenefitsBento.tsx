@@ -18,9 +18,13 @@ function IconTile({ icon: Icon }: { icon: LucideIcon }) {
   );
 }
 
-function Point({ text }: { text: string }) {
+function Point({ text, light }: { text: string; light: boolean }) {
   return (
-    <p className="text-pretty font-serif text-base leading-[1.8] text-cgs-text/85 first-letter:uppercase">
+    <p
+      className={`text-pretty font-serif text-base leading-[1.8] first-letter:uppercase ${
+        light ? "text-cgs-ink-soft" : "text-cgs-text/85"
+      }`}
+    >
       {text}
     </p>
   );
@@ -28,23 +32,26 @@ function Point({ text }: { text: string }) {
 
 // Bento da Dobra 3 (referência): cartão principal dividido em dois — texto à esquerda,
 // painel decorativo à direita — e três cartões iguais embaixo.
-export function BenefitsBento({ benefits }: { benefits: Benefit[] }) {
+export function BenefitsBento({ benefits, light = false }: { benefits: Benefit[]; light?: boolean }) {
   const [main, ...rest] = benefits;
+  const card = light ? "border-cgs-hairline-ink bg-cgs-parchment/60" : "border-white/10 bg-white/[0.03]";
+  const divider = light ? "border-cgs-hairline-ink" : "border-white/10";
+  const heading = light ? "text-cgs-bg" : "text-cgs-text";
 
   return (
     <div className="space-y-4 sm:space-y-5">
       <Reveal>
-        <div className="grid overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] lg:grid-cols-[1.1fr_1fr]">
+        <div className={`grid overflow-hidden rounded-2xl border lg:grid-cols-[1.1fr_1fr] ${card}`}>
           <div className="flex flex-col justify-center gap-6 p-8 sm:p-10 lg:p-14">
             <IconTile icon={main.icon} />
-            <h3 className="font-serif text-[1.75rem] font-bold leading-snug text-cgs-text sm:text-[2rem]">
+            <h3 className={`font-serif text-[1.75rem] font-bold leading-snug sm:text-[2rem] ${heading}`}>
               {main.title} <span className="italic text-cgs-gold">{main.accent}</span>
             </h3>
-            <Point text={main.text} />
+            <Point text={main.text} light={light} />
           </div>
 
           {/* Vídeo da aula no quadro: no celular fica em cima do bloco; no desktop, à direita */}
-          <div className="relative order-first aspect-video overflow-hidden border-b border-white/10 lg:order-none lg:aspect-auto lg:min-h-[16rem] lg:border-b-0 lg:border-l">
+          <div className={`relative order-first aspect-video overflow-hidden border-b lg:order-none lg:aspect-auto lg:min-h-[16rem] lg:border-b-0 lg:border-l ${divider}`}>
             <HeroVideo src="/video/hero.mp4" poster="/video/hero-poster.webp" />
             {/* Grid overlay */}
             <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(90deg,rgb(229_159_20/0.3)_1px,transparent_1px),linear-gradient(rgb(229_159_20/0.3)_1px,transparent_1px)] [background-size:40px_40px]" />
@@ -57,13 +64,15 @@ export function BenefitsBento({ benefits }: { benefits: Benefit[] }) {
       <div className="grid gap-4 sm:gap-5 md:grid-cols-3">
         {rest.map((b, i) => (
           <Reveal key={b.title} delay={i * 0.1} className="h-full">
-            <article className="flex h-full flex-col gap-6 rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition-colors duration-300 hover:border-cgs-gold/30">
+            <article
+              className={`flex h-full flex-col gap-6 rounded-2xl border p-8 transition-colors duration-300 hover:border-cgs-gold/30 ${card}`}
+            >
               <IconTile icon={b.icon} />
-              <h3 className="font-serif text-[1.35rem] font-bold leading-snug text-cgs-text sm:text-2xl">
+              <h3 className={`font-serif text-[1.35rem] font-bold leading-snug sm:text-2xl ${heading}`}>
                 {b.title}
                 {b.accent ? ` ${b.accent}` : ""}
               </h3>
-              <Point text={b.text} />
+              <Point text={b.text} light={light} />
             </article>
           </Reveal>
         ))}

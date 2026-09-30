@@ -1,7 +1,7 @@
 type CtaButtonProps = {
   children: React.ReactNode;
   href?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   className?: string;
   tabIndex?: number;
 };
@@ -12,6 +12,7 @@ const sizes = {
   sm: "px-5 py-2.5 text-[0.8rem]",
   md: "px-8 py-3.5 text-sm",
   lg: "px-9 py-4 text-[0.95rem] sm:text-base",
+  xl: "px-10 py-5 text-base sm:text-lg",
 };
 
 // CTA principal: dourado sólido em degradê suave, com brilho interno no topo e um

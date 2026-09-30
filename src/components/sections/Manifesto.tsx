@@ -122,7 +122,7 @@ export function Manifesto() {
         <Reveal className="mx-auto mt-24 max-w-4xl sm:mt-32">
           <figure className="relative text-center">
             <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cgs-gold/[0.06] blur-3xl" />
-            <blockquote className="relative text-balance font-serif text-[1.75rem] font-bold italic leading-[1.4] text-cgs-text sm:text-4xl sm:leading-[1.4] lg:text-[2.9rem] lg:leading-[1.35]">
+            <blockquote className="relative text-balance font-serif text-lg font-bold italic leading-[1.7] text-cgs-text sm:text-xl sm:leading-[1.7]">
               Não adianta ter a biblioteca inteira na cabeça se você não tem as{" "}
               <span className="text-cgs-gold">gavetas certas</span> para guardar cada informação.
             </blockquote>
