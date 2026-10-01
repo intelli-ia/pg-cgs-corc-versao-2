@@ -15,6 +15,7 @@ export function Hero() {
         {/* No celular o corte é lateral: puxa o enquadramento para mostrar mais o lado direito do vídeo, deslocando-o para a esquerda */}
         <HeroVideo
           src="/video/hero.mp4"
+          mobileSrc="/video/hero-mobile.mp4"
           poster="/video/hero-poster.webp"
           className="object-[68%_50%] sm:object-center"
         />

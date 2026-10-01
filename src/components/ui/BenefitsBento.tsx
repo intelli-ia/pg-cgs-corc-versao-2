@@ -52,7 +52,7 @@ export function BenefitsBento({ benefits, light = false }: { benefits: Benefit[]
 
           {/* Vídeo da aula no quadro: no celular fica em cima do bloco; no desktop, à direita */}
           <div className={`relative order-first aspect-video overflow-hidden border-b lg:order-none lg:aspect-auto lg:min-h-[16rem] lg:border-b-0 lg:border-l ${divider}`}>
-            <HeroVideo src="/video/hero.mp4" poster="/video/hero-poster.webp" />
+            <HeroVideo src="/video/hero.mp4" mobileSrc="/video/hero-mobile.mp4"poster="/video/hero-poster.webp" />
             {/* Grid overlay */}
             <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(90deg,rgb(229_159_20/0.3)_1px,transparent_1px),linear-gradient(rgb(229_159_20/0.3)_1px,transparent_1px)] [background-size:40px_40px]" />
             {/* Vinheta */}
