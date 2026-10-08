@@ -17,7 +17,7 @@ const sizes = {
 
 // CTA principal: dourado sólido em degradê suave, com brilho interno no topo e um
 // reflexo que atravessa o botão no hover. Texto escuro para contraste máximo.
-// {/* TODO: link real de checkout Hubla */} — o padrão vem de CHECKOUT_URL.
+// O link padrão vem de CHECKOUT_URL.
 export function CtaButton({
   children,
   href = CHECKOUT_URL,
