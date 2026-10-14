@@ -140,3 +140,9 @@
     animation: none;
   }
 }
+
+/* Player do depoimento em vídeo, sem tela cheia: `controlsList="nofullscreen"`
+   deixa o botão apagado no Chrome; o pseudo-elemento o tira da barra. */
+.video-sem-tela-cheia::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
