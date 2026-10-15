@@ -12,7 +12,7 @@ export function Raciocinio() {
           </h2>
         </Reveal>
 
-        <div className="mt-10 space-y-8 text-pretty font-serif text-lg leading-[1.85] text-cgs-ink-soft sm:mt-12 sm:space-y-10 sm:text-xl sm:leading-[1.85]">
+        <div className="mt-10 space-y-4 text-pretty font-serif text-lg leading-[1.85] text-cgs-ink-soft sm:mt-12 sm:space-y-5 sm:text-xl sm:leading-[1.85]">
           <Reveal>
             <p>
               A faculdade malmente te entrega os conteúdos; as diretrizes curriculares recentes

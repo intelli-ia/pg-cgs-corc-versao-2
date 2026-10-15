@@ -34,7 +34,7 @@ export function Professor() {
         <Reveal delay={0.1}>
           <Eyebrow>Quem conduz o CGS:</Eyebrow>
           <h2 className="chalk mt-5 text-[1.9rem] leading-tight sm:text-4xl">Dr. Carlos Antonio Moura</h2>
-          <div className="mt-8 space-y-5 text-pretty text-base leading-relaxed text-cgs-text/80 sm:text-[1.05rem]">
+          <div className="mt-8 space-y-3 text-pretty text-base leading-relaxed text-cgs-text/80 sm:text-[1.05rem]">
             <p>
               Dr. Carlos Antonio Moura é médico graduado pela UFBA, clínico e reumatologista titulado
               pela SBR, com doutorado em Medicina e Saúde Humana. Além de escritor e palestrante, é

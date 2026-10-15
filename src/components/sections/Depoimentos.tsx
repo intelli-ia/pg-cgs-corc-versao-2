@@ -77,8 +77,8 @@ const DEPOIMENTOS: Depoimento[] = [
     ],
     midia: {
       tipo: "imagem",
-      src: "/images/carlos-antonio-moura-retrato.webp",
-      alt: "Retrato de Carlos Antônio Moura sorrindo, de blazer claro e camisa xadrez",
+      src: "/images/rayssa-valandro.webp",
+      alt: "Estudantes de jaleco reunidos em volta do leito em uma enfermaria, acompanhando a explicação do professor",
     },
   },
   {
@@ -181,7 +181,7 @@ function Card({ autor, subtitulo, paragrafos, midia }: Depoimento) {
         />
       </figcaption>
 
-      <blockquote className="relative mt-5 space-y-3.5">
+      <blockquote className="relative mt-5 space-y-2">
         {paragrafos.map((paragrafo, index) => (
           <p
             key={paragrafo}

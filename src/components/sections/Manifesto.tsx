@@ -86,7 +86,7 @@ export function Manifesto() {
             Você estuda e decora... mas o seu raciocínio parece um labirinto?
           </SectionTitle>
         </Reveal>
-        <Reveal delay={0.1} className="mt-8 space-y-5 text-pretty text-lg leading-relaxed text-cgs-text/90 sm:mt-10 sm:text-xl sm:leading-[1.7]">
+        <Reveal delay={0.1} className="mt-8 space-y-3 text-pretty text-lg leading-relaxed text-cgs-text/90 sm:mt-10 sm:text-xl sm:leading-[1.7]">
           <p>
             A medicina moderna nos entope de informações, mas esquece de nos ensinar o mais
             importante: como <strong className="font-bold text-cgs-text">organizar</strong> tudo
