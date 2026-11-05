@@ -1,4 +1,5 @@
 import { CtaButton } from "@/components/ui/CtaButton";
+import { LaunchCountdown } from "@/components/ui/LaunchCountdown";
 import { HeroVideo } from "@/components/ui/HeroVideo";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -29,7 +30,7 @@ export function Hero() {
 
       {/* Tarja vermelha no topo */}
       <div className="absolute inset-x-0 top-0 z-10 bg-[#a80000] px-4 py-3 text-center font-serif text-[0.7rem] font-bold uppercase tracking-[0.14em] text-cgs-text sm:text-xs">
-        Aulas no quadro
+        <LaunchCountdown />
       </div>
 
       <div className="relative mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-[5.5%]">
