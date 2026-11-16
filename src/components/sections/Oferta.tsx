@@ -100,13 +100,13 @@ export function Oferta() {
             {/* ── Preço ── */}
             <div className="mt-11 border-t border-cgs-hairline-ink pt-10 text-center md:mt-14 md:pt-12">
               <p className="text-base font-light text-cgs-ink-soft md:text-lg">
-                De <s className="decoration-1">R$ 597</s> por apenas 12x de
+                De <s className="decoration-1">R$ 597</s> por apenas 11x de
               </p>
               <p className="mt-2 text-[44px] font-black leading-none text-cgs-bg sm:text-[56px] md:text-[68px]">
-                R$ 30,02
+                R$ 35,26
               </p>
 
-              <p className="mt-4 text-base font-light text-cgs-ink-soft md:text-lg">ou R$ 297 à vista</p>
+              <p className="mt-4 text-base font-light text-cgs-ink-soft md:text-lg">ou R$ 347 à vista</p>
 
               {/* Botão em uma linha, com brilho de fundo pulsando */}
               <div className="relative mx-auto mt-10 w-full">

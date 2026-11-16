@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-// Domingo, 15/11/2026, 23h59 (horário de Brasília).
-const DEADLINE = new Date("2026-11-15T23:59:00-03:00").getTime();
+// Segunda, 30/11/2026, 23h59 (horário de Brasília).
+const DEADLINE = new Date("2026-11-30T23:59:00-03:00").getTime();
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
